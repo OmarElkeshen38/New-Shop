@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+const nextConfig = {
+    images: {
+        domains: ['fakestoreapi.com'],
+        loader: 'imgix',
+    },
+
+}
+
+module.exports = { 
+    images: {
+        domains: ['fakestoreapi.com'],
+    },
+ };

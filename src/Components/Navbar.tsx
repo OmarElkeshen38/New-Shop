@@ -17,7 +17,7 @@ const Navbar: FC = () => {
 
     return (
         <header className="bg-cyan-700">
-            <div className="navbar bg-cyan-700 bg-current container">
+            <div className="navbar bg-cyan-700 bg-current container py-4">
                 <div className="flex-1 text-cyan-100">
                     <Link href="/" className="btn btn-ghost text-xl">
                         New Shop
@@ -48,13 +48,11 @@ const Navbar: FC = () => {
                             tabIndex={0}
                             className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
                         >
-                            <div className="card-body bg-cyan-100">
-                                <span className="font-bold text-lg text-cyan-700">8 Items</span>
-                                <span className="text-cyan-700">Subtotal: $999</span>
+                            <div className="card-body bg-cyan-400 rounded-md">
+                                <span className="font-bold text-lg text-cyan-950">8 Items</span>
+                                <span className="text-cyan-950">Subtotal: $999</span>
                                 <div className="card-actions">
-                                    <button className="btn btn-primary btn-block">
-                                        View cart
-                                    </button>
+                                    <button className="btn btn-block btn-outline">View cart</button>
                                 </div>
                             </div>
                         </div>
