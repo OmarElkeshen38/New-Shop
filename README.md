@@ -15,3 +15,4 @@ E-commerce application built with **Next.js** and **Tailwind CSS** that allows u
 - [DaisyUI] https://daisyui.com/
 - [Tailwind CSS] https://tailwindcss.com/
 - [Fakestore API] https://fakestoreapi.com/
+- [sweetalert2] https://sweetalert2.com/
