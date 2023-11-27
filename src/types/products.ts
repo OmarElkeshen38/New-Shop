@@ -13,6 +13,7 @@ export interface Product {
 
 
 export interface ProductDataWrapper {
+    results: any;
     map(arg0: (product: any) => import("react").JSX.Element): import("react").ReactNode;
     products: Product[];
 }

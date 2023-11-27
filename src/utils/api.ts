@@ -15,3 +15,10 @@ export const getProducts = async (): Promise<ProductDataWrapper> => {
     const res = await fetch(url);
     return handleResponse<ProductDataWrapper>(res);
 }
+
+
+export const detailProduct = async (productId: string): Promise<ProductDataWrapper> => {
+  const url = `${BASE_URL}/products/${productId}`;
+  const res = await fetch(url);
+  return handleResponse<ProductDataWrapper>(res);
+};

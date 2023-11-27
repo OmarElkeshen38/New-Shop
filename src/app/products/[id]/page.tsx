@@ -1,0 +1,64 @@
+'use client';
+
+import LoadingBars from '@/Components/LoadingBars';
+import { detailProduct } from '@/utils/api';
+import Image from 'next/image';
+import { FC, useEffect, useState } from 'react';
+
+interface ProductDetailsProps {
+  params: {
+    id: string;
+  };
+}
+
+const ProductDetail: FC<ProductDetailsProps> = ({ params }) => {
+  const { id } = params;
+  const [product, setProduct] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const productData = await detailProduct(id);
+        setProduct(productData);
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      }
+    };
+    fetchProduct();
+  }, [id]);
+
+  return (
+    <div className="container flex flex-col gap-4 items-center">
+      {product ? (
+        <div className="rounded-md grid grid-cols-3 gap-5 lg:card-side bg-slate-100 p-8 max-w-5xl my-10 shadow-xl">
+          <figure className='max-w-sm'>
+            <Image
+              className="rounded-md w-full"
+              src={`${product.image}`}
+              alt={`product ${product.title}`}
+              width={250}
+              height={200}
+            />
+          </figure>
+          <div className="card-body col-span-2">
+            <h2 className="card-title text-2xl">{product.title}</h2>
+            <p className="my-4">{product.description}</p>
+            <h3 className='text-xl'>
+              <span className="me-2 text-xl font-semibold">Category: </span>{product.category}
+            </h3>
+            <h3 className='text-xl'><span className="me-2 text-xl font-semibold">Price: </span> ${product.price}</h3>
+            <div className="card-actions justify-end">
+              <button className="btn bg-slate-600 text-slate-200 hover:bg-slate-200 hover:text-slate-900">
+                <span className="text-xl">+</span>Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+          <LoadingBars />
+      )}
+    </div>
+  );
+};
+
+export default ProductDetail;
