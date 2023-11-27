@@ -4,6 +4,7 @@ import { Product } from '@/types/products';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
+import Swal from 'sweetalert2';
 
 interface ProductsCardProps {
     product: Product;
@@ -12,25 +13,28 @@ interface ProductsCardProps {
 const ProductsCard: FC<ProductsCardProps> = ({ product }) => {
 
   const addToCart = () => {
-    console.log('Adding to cart:', product);
-    // Get existing cart items from localStorage
     const existingCartItems = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    // Check if the product is already in the cart
     const isProductInCart = existingCartItems.some((item: Product) => item.id === product.id);
 
     if (!isProductInCart) {
-      // Add the product to the cart
       const updatedCart = [...existingCartItems, product];
-
-      // Update localStorage with the new cart items
       localStorage.setItem('cart', JSON.stringify(updatedCart));
-
-      // Optionally, you can update some state or provide feedback to the user
-      alert('Product added to cart!');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product added successfully!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else {
-      // Optionally, provide feedback that the product is already in the cart
-      alert('Product is already in the cart!');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Product already exists!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
