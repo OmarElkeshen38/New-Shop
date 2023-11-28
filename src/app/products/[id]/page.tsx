@@ -31,7 +31,7 @@ const ProductDetail: FC<ProductDetailsProps> = ({ params }) => {
   const addToCart = () => {
     const existingCartItems = JSON.parse(localStorage.getItem('cart') || '[]');
     const isProductInCart = existingCartItems.some(
-      (item: { id: any; }) => item.id === product.id,
+      (item: { id: any }) => item.id === product.id,
     );
 
     if (!isProductInCart) {
@@ -58,8 +58,8 @@ const ProductDetail: FC<ProductDetailsProps> = ({ params }) => {
   return (
     <div className="container flex flex-col gap-4 items-center">
       {product ? (
-        <div className="rounded-md grid grid-cols-3 gap-5 lg:card-side bg-slate-100 p-8 max-w-5xl my-10 shadow-xl">
-          <figure className="max-w-sm">
+        <div className="rounded-md grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:card-side bg-slate-100 p-8 max-w-5xl my-10 shadow-xl">
+          <figure className="max-w-sm lg:col-span-1 xl:col-span-2">
             <Image
               className="rounded-md w-full"
               src={`${product.image}`}
@@ -68,7 +68,7 @@ const ProductDetail: FC<ProductDetailsProps> = ({ params }) => {
               height={200}
             />
           </figure>
-          <div className="card-body col-span-2">
+          <div className="card-body lg:col-span-1 xl:col-span-1">
             <h2 className="card-title text-2xl">{product.title}</h2>
             <p className="my-4">{product.description}</p>
             <h3 className="text-xl">
