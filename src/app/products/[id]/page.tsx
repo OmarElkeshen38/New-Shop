@@ -31,7 +31,7 @@ const ProductDetail: FC<ProductDetailsProps> = ({ params }) => {
   const addToCart = () => {
     const existingCartItems = JSON.parse(localStorage.getItem('cart') || '[]');
     const isProductInCart = existingCartItems.some(
-      (item) => item.id === product.id,
+      (item: { id: any; }) => item.id === product.id,
     );
 
     if (!isProductInCart) {
